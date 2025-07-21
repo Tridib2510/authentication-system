@@ -36,7 +36,7 @@ toast.success('Successfully toasted!')
         toast.error(error.message)
       }
       finally{
-
+      setloading(false)
       }
    }
    
