@@ -51,7 +51,7 @@ toast.success('Successfully toasted!')
 
     return(
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
-            <Toaster />
+            
             <h1>{loading?"Processing":"Signup"}</h1>
 
             <hr />

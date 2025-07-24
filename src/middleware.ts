@@ -10,8 +10,8 @@ export function middleware(request:NextRequest){
     // logged in
    
     const path=request.nextUrl.pathname
-    const isPublicPath=path==='/login' || path==='signup'//This path should not be visible to people that has the token
-
+    const isPublicPath=path==='/login' || path==='/signup' || path==='/verifyemail' //This path should not be visible to people that has the token
+   console.log('isPublicPath',isPublicPath)
    const token= request.cookies.get('token')?.value||''
 
    if(isPublicPath && token){
@@ -47,6 +47,7 @@ export const config={
         '/',
         '/profile',
         '/login',
-        '/signup'
+        '/signup',
+        '/verifyemail'
     ]
 }

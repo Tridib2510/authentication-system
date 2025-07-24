@@ -9,6 +9,7 @@ import User from "@/app/models/usermodels"
 // request and response in express
 import { NextRequest,NextResponse } from "next/server"
 import bcryptjs from "bcryptjs"
+import { sendEmail } from "@/helpers/mailer"
 
 connect()
 
@@ -38,6 +39,9 @@ const newUser=new User({
 
 const savedUser=await newUser.save()
 console.log(savedUser)
+
+//send an verification email
+await sendEmail({email,emailType:'VERIFY',userId:savedUser._id})
 
 return NextResponse.json({
     message:"User created successfully"    
