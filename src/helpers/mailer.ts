@@ -26,12 +26,11 @@ const mailOptions={
     from:'tridibroychowdhury9@gmail.com',
     to:email,
     subject:emailType==='VERIFY'?'Verify your account':'Reset your password',
-    html:`<p>Click<a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">here</a> to 
+    html:emailType==='VERIFY'?`<p>Click<a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">here</a> to 
     ${emailType==='VERIFY'?'verify your email':'reset your password'}
     or copy and paste the link in your browser
     <br>${process.env.DOMAIN}/verifiyemail?token=${hashedToken}
-    </p>`
-    
+    </p>`:`<p>Click<a href="${process.env.DOMAIN}/changepassword?token=${hashedToken}">here</a> to reset your password or copy and paste the link in your browser<br>`
 }
 
 const mailresponse=await transport.sendMail(mailOptions)
